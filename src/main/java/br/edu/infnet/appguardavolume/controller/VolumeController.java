@@ -1,21 +1,21 @@
-package br.edu.infnet.appguardavolume;
-
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
-import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
+package br.edu.infnet.appguardavolume.controller;
 
 import br.edu.infnet.appguardavolume.model.domain.Bebida;
 import br.edu.infnet.appguardavolume.model.domain.Comida;
 import br.edu.infnet.appguardavolume.model.domain.Vestido;
+import br.edu.infnet.appguardavolume.model.domain.Volume;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
-@Order(3)
-@Component
-public class VolumeTeste implements ApplicationRunner {
+import java.util.ArrayList;
+import java.util.List;
 
-	@Override
-	public void run(ApplicationArguments args) throws Exception {
-		System.out.println("## Cadastramento de Volumes ##");
+@Controller
+public class VolumeController {
+	
+	@GetMapping(value = "/volume/lista")
+	public String telaLista(Model model) {
 
 		Bebida b1 = new Bebida();
 		b1.setCodigo(123);
@@ -25,8 +25,8 @@ public class VolumeTeste implements ApplicationRunner {
 		b1.setMarca("Heineken");
 		System.out.println("> " + b1);
 
-		Comida c1 = new Comida();		
-		c1.setCodigo(123); 
+		Comida c1 = new Comida();
+		c1.setCodigo(123);
 		c1.setNome("Comida 123");
 		c1.setValor(10);
 		c1.setPeso(100);
@@ -40,5 +40,15 @@ public class VolumeTeste implements ApplicationRunner {
 		v1.setImportado(false);
 		v1.setTamanho("GG");
 		System.out.println("> " + v1);
+
+		List<Volume> volumes = new ArrayList<Volume>();
+		volumes.add(b1);
+		volumes.add(c1);
+		volumes.add(v1);
+
+		model.addAttribute("listagem", volumes);
+
+		return "volume/lista";
 	}
+
 }
