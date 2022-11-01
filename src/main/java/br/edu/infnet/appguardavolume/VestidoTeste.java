@@ -5,6 +5,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.appguardavolume.controller.VestidoController;
 import br.edu.infnet.appguardavolume.model.domain.Vestido;
 
 @Order(6)
@@ -21,7 +22,7 @@ public class VestidoTeste implements ApplicationRunner {
 		v1.setValor(10);
 		v1.setImportado(true);
 		v1.setTamanho("P");
-		System.out.println("> " + v1);
+		VestidoController.incluir(v1);
 		
 		Vestido v2 = new Vestido();
 		v2.setCodigo(234);
@@ -29,7 +30,7 @@ public class VestidoTeste implements ApplicationRunner {
 		v2.setValor(15);
 		v2.setImportado(true);
 		v2.setTamanho("PP");
-		System.out.println("> " + v2);
+		VestidoController.incluir(v2);
 		
 		Vestido v3 = new Vestido();
 		v3.setCodigo(345);
@@ -37,6 +38,6 @@ public class VestidoTeste implements ApplicationRunner {
 		v3.setValor(20);
 		v3.setImportado(true);
 		v3.setTamanho("GG");
-		System.out.println("> " + v3);
+		VestidoController.incluir(v3);
 	}
 }

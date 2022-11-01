@@ -1,45 +1,49 @@
 package br.edu.infnet.appguardavolume.controller;
 
-import br.edu.infnet.appguardavolume.model.domain.Comida;
-import br.edu.infnet.appguardavolume.model.domain.Condomino;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.ArrayList;
-import java.util.List;
+import br.edu.infnet.appguardavolume.model.domain.Condomino;
 
 @Controller
 public class CondominoController {
+	
+	private static Map<Integer, Condomino> mapa = new HashMap<Integer, Condomino>();
+	private static Integer id = 1;
 
-    @GetMapping(value = "/condomino/lista")
-    public String telaLista(Model model) {
+	public static void incluir(Condomino condomino) {
+		condomino.setId(id++);
+		mapa.put(condomino.getId(), condomino);
+		
+		System.out.println("> " + condomino);
+	}
+	
+	public static void excluir(Integer id) {
+		mapa.remove(id);
+	}
+	
+	public static Collection<Condomino> obterLista(){
+		return mapa.values();
+	}
+		
+	@GetMapping(value = "/condomino/lista")
+	public String telaLista(Model model) {
+		model.addAttribute("listagem", obterLista());
 
-        Condomino c1 = new Condomino();
-        c1.setCpf("33344412312");
-        c1.setEmail("condomino123@mrv.com.br");
-        c1.setNome("Primeiro condomino");
-        System.out.println("> " + c1);
+		return "condomino/lista";
+	}
+	
+	@GetMapping(value = "/condomino/{id}/excluir")
+	public String exclusao(@PathVariable Integer id) {
 
-        Condomino c2 = new Condomino();
-        c2.setCpf("43354412312");
-        c2.setEmail("condomino423@mrv.com.br");
-        c2.setNome("Segundo condomino");
-        System.out.println("> " + c2);
-
-        Condomino c3 = new Condomino();
-        c3.setCpf("63355412555");
-        c3.setEmail("condomino543@mrv.com.br");
-        c3.setNome("Terceiro condomino");
-        System.out.println("> " + c3);
-
-        List<Condomino> condominos = new ArrayList<Condomino>();
-        condominos.add(c1);
-        condominos.add(c2);
-        condominos.add(c3);
-
-        model.addAttribute("listagem", condominos);
-
-        return "condomino/lista";
-    }
+		excluir(id);
+		
+		return "redirect:/condomino/lista";
+	}
 }

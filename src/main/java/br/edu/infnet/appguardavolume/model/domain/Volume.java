@@ -1,13 +1,22 @@
 package br.edu.infnet.appguardavolume.model.domain;
 
 public abstract class Volume {
+	private Integer id;
 	private String nome;
 	private float valor;
 	private int codigo;
 
 	@Override
 	public String toString() {
-		return nome + ";" + valor + ";" + codigo;
+		return id + ";" + nome + ";" + valor + ";" + codigo;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNome() {

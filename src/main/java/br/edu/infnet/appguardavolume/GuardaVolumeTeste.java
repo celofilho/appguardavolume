@@ -4,11 +4,18 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.infnet.appguardavolume.model.domain.*;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+
+import br.edu.infnet.appguardavolume.controller.GuardaVolumeController;
+import br.edu.infnet.appguardavolume.model.domain.Bebida;
+import br.edu.infnet.appguardavolume.model.domain.Comida;
+import br.edu.infnet.appguardavolume.model.domain.GuardaVolume;
+import br.edu.infnet.appguardavolume.model.domain.Volume;
+import br.edu.infnet.appguardavolume.model.domain.Vestido;
+import br.edu.infnet.appguardavolume.model.domain.Condomino;
 
 @Order(1)
 @Component
@@ -16,7 +23,7 @@ public class GuardaVolumeTeste implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		System.out.println("## Cadastramento de Guarda Volume ##");
+		System.out.println("## Cadastramento de Guarda Volumes ##");
 
 		Bebida bebida = new Bebida();
 		bebida.setCodigo(123);
@@ -48,7 +55,6 @@ public class GuardaVolumeTeste implements ApplicationRunner {
 		c2.setEmail("primeiro@Condomino.com");
 		c2.setNome("Segundo condomino");
 
-
 		List<Volume> GuardaVolume01 = new ArrayList<Volume>();
 		GuardaVolume01.add(bebida);
 		GuardaVolume01.add(comida);
@@ -58,24 +64,25 @@ public class GuardaVolumeTeste implements ApplicationRunner {
 		GuardaVolume02.add(comida);
 		GuardaVolume02.add(vestido);
 
-		GuardaVolume p1 = new GuardaVolume();
+		GuardaVolume p1 = new GuardaVolume(c1);
 		p1.setData(LocalDateTime.now());
 		p1.setDescricao("Primeiro Guarda Volume");
 		p1.setCondomino(c1);
 		p1.setVolumes(GuardaVolume01);
-		System.out.println("> " + p1);
-
+		GuardaVolumeController.incluir(p1);
+		
 		GuardaVolume p2 = new GuardaVolume();
 		p2.setData(LocalDateTime.now());
 		p2.setDescricao("Segundo Guarda Volume");
 		p2.setCondomino(c1);
 		p2.setVolumes(GuardaVolume02);
-		System.out.println("> " + p2);
+		GuardaVolumeController.incluir(p2);
 
 		GuardaVolume p3 = new GuardaVolume();
 		p3.setData(LocalDateTime.now());
 		p3.setDescricao("Terceiro Guarda Volume");
+		p3.setCondomino(c2);
 		p3.setVolumes(GuardaVolume02);
-		System.out.println("> " + p3);
+		GuardaVolumeController.incluir(p3);
 	}
 }

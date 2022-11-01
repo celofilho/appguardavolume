@@ -1,11 +1,10 @@
 package br.edu.infnet.appguardavolume.model.domain;
 
 public class Bebida extends Volume {
-
 	private int quantidade;
 	private String marca;
 
-	
+
 	@Override
 	public String toString() {
 		return super.toString() + ";" + quantidade + ";" + marca;

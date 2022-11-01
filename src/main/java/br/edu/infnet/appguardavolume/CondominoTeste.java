@@ -5,6 +5,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.appguardavolume.controller.CondominoController;
 import br.edu.infnet.appguardavolume.model.domain.Condomino;
 
 @Order(2)
@@ -19,18 +20,18 @@ public class CondominoTeste implements ApplicationRunner {
 		s1.setCpf("33344412312");
 		s1.setEmail("condomino123@mrv.com.br");
 		s1.setNome("Primeiro condomino");
-		System.out.println("> " + s1);
+		CondominoController.incluir(s1);
 		
 		Condomino s2 = new Condomino();
 		s2.setCpf("43354412312");
 		s2.setEmail("condomino423@mrv.com.br");
 		s2.setNome("Segundo condomino");
-		System.out.println("> " + s2);
+		CondominoController.incluir(s2);
 		
 		Condomino s3 = new Condomino();
 		s3.setCpf("63355412555");
 		s3.setEmail("condomino543@mrv.com.br");
 		s3.setNome("Terceiro condomino");
-		System.out.println("> " + s3);
+		CondominoController.incluir(s3);
 	}
 }

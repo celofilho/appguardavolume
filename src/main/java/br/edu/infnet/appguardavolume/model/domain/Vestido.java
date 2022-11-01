@@ -1,10 +1,9 @@
 package br.edu.infnet.appguardavolume.model.domain;
 
 public class Vestido extends Volume {
-
 	private boolean importado;
 	private String tamanho;
-	
+
 	@Override
 	public String toString() {
 		return super.toString() + ";" + importado + ";" + tamanho;

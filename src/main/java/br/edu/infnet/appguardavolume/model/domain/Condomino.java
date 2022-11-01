@@ -1,10 +1,15 @@
 package br.edu.infnet.appguardavolume.model.domain;
 
 public class Condomino {
+	public Integer getId() {
+		return id;
+	}
+
+	private Integer id;
 	private String nome;
 	private String cpf;
 	private String email;
-	
+
 	@Override
 	public String toString() {
 		return nome + ";" + cpf + ";" + email;
@@ -32,5 +37,9 @@ public class Condomino {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 }

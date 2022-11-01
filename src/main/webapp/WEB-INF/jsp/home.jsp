@@ -8,30 +8,30 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-	<div class="container-fluid">
-		<ul class="navbar-nav">
-			<li class="nav-item">
-				<a class="nav-link" href="/guardavolume/lista">GuardaVolume</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/condomino/lista">Condomino</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/volume/lista">Volume</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/bebida/lista">Bebida</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/comida/lista">Comida</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/vestido/lista">Vestido</a>
-			</li>
-		</ul>
-	</div>
-</nav>
+	<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+	  <div class="container-fluid">
+	    <ul class="navbar-nav">
+	      <li class="nav-item">
+	        <a class="nav-link" href="/guardavolume/lista">GuardaVolume</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/condomino/lista">Condomino</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/volume/lista">Volume</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/bebida/lista">Bebida</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/comida/lista">Comida</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/vestido/lista">Vestido</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
 
 </body>
 </html>

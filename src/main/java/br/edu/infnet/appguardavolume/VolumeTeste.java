@@ -5,6 +5,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.appguardavolume.controller.VolumeController;
 import br.edu.infnet.appguardavolume.model.domain.Bebida;
 import br.edu.infnet.appguardavolume.model.domain.Comida;
 import br.edu.infnet.appguardavolume.model.domain.Vestido;
@@ -23,15 +24,15 @@ public class VolumeTeste implements ApplicationRunner {
 		b1.setValor(10);
 		b1.setQuantidade(10);
 		b1.setMarca("Heineken");
-		System.out.println("> " + b1);
+		VolumeController.incluir(b1);
 
-		Comida c1 = new Comida();		
-		c1.setCodigo(123); 
+		Comida c1 = new Comida();
+		c1.setCodigo(123);
 		c1.setNome("Comida 123");
 		c1.setValor(10);
 		c1.setPeso(100);
 		c1.setPerecivel(true);
-		System.out.println("> " + c1);
+		VolumeController.incluir(c1);
 
 		Vestido v1 = new Vestido();
 		v1.setCodigo(123);
@@ -39,6 +40,6 @@ public class VolumeTeste implements ApplicationRunner {
 		v1.setValor(10);
 		v1.setImportado(false);
 		v1.setTamanho("GG");
-		System.out.println("> " + v1);
+		VolumeController.incluir(v1);
 	}
 }
