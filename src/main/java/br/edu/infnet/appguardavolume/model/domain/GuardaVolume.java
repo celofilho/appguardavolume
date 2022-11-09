@@ -3,21 +3,35 @@ package br.edu.infnet.appguardavolume.model.domain;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "tguardavolume")
 public class GuardaVolume {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String descricao;
 	private LocalDateTime data;
 
+	@ManyToOne
+	@JoinColumn(name = "idCondomino")
 	private Condomino condomino;
+
+	@OneToMany
+	@JoinColumn(name = "idVolume")
+	private List<Volume> volumes;
+
 
 	public List<Volume> getVolumes() {
 		return volumes;
 	}
-	
+
 	public GuardaVolume() {
 		data = LocalDateTime.now();
 	}
-	
+
 	public GuardaVolume(Condomino condomino) {
 		this();
 		this.condomino = condomino;
@@ -56,7 +70,6 @@ public class GuardaVolume {
 		this.volumes = volumes;
 	}
 
-	private List<Volume> volumes;
 
 	public Condomino getCondomino() {
 		return condomino;
@@ -65,6 +78,4 @@ public class GuardaVolume {
 	public void setCondomino(Condomino condomino) {
 		this.condomino = condomino;
 	}
-
-
 }

@@ -1,29 +1,31 @@
 package br.edu.infnet.appguardavolume.model.domain;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tcondomino")
-public class Condomino {
+@Table(name = "tusuario")
+public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
-	private String cpf;
 	private String email;
-	@ManyToOne
+	private String senha;
+	@OneToMany
 	@JoinColumn(name = "idUsuario")
-	private Usuario usuario;
+	private List<Condomino> condominos;
 	
 	@Override
 	public String toString() {
-		return id + ";" + nome + ";" + cpf + ";" + email;
+		return id + ";" + nome + ";" + email + ";" + senha;
 	}
 
 	public Integer getId() {
@@ -42,14 +44,6 @@ public class Condomino {
 		this.nome = nome;
 	}
 
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -58,11 +52,19 @@ public class Condomino {
 		this.email = email;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public String getSenha() {
+		return senha;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public List<Condomino> getSolicitantes() {
+		return condominos;
+	}
+
+	public void setSolicitantes(List<Condomino> condominos) {
+		this.condominos = condominos;
 	}
 }

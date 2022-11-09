@@ -1,5 +1,10 @@
 package br.edu.infnet.appguardavolume.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tcomida")
 public class Comida extends Volume {
 	private float peso;
 	private boolean perecivel;

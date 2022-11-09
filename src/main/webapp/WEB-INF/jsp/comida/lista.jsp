@@ -11,32 +11,34 @@
 	<div class="container mt-3">
 	  <h3>Comidas: ${listagem.size()}</h3>
 
-	  <table class="table table-striped">
-	    <thead>
-	      <tr>
-	        <th>ID</th>
-	        <th>Nome</th>
-	        <th>Valor</th>
-	        <th>Código</th>
-	        <th>Peso</th>
-			  <th>Perecível</th>
-	        <th></th>
-	      </tr>
-	    </thead>
-	    <tbody>
-		  <c:forEach var="c" items="${listagem}">
-		      <tr>
-				<td>${c.id}</td>
-		        <td>${c.nome}</td>
-		        <td>${c.valor}</td>
-		        <td>${c.codigo}</td>
-		        <td>${c.peso}</td>
-		        <td>${c.perecivel}</td>
-		        <td><a href="/comida/${c.id}/excluir">excluir</a></td>
-		      </tr>
-	      </c:forEach>
-	    </tbody>
-	  </table>
+		<h4><a href="/comida">Nova Comida</a></h4>
+
+		<table class="table table-striped">
+			<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Valor</th>
+				<th>Código</th>
+				<th>Peso</th>
+				<th>Perecível</th>
+				<th></th>
+			</tr>
+			</thead>
+			<tbody>
+			<c:forEach var="c" items="${listagem}">
+				<tr>
+					<td>${c.id}</td>
+					<td>${c.nome}</td>
+					<td>${c.valor}</td>
+					<td>${c.codigo}</td>
+					<td>${c.peso}</td>
+					<td>${c.perecivel}</td>
+					<td><a href="/comida/${c.id}/excluir">excluir</a></td>
+				</tr>
+			</c:forEach>
+			</tbody>
+		</table>
 	</div>
 </body>
 </html>

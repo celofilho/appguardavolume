@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.infnet.appguardavolume.model.service.GuardaVolumeService;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -17,10 +18,11 @@ import br.edu.infnet.appguardavolume.model.domain.Volume;
 import br.edu.infnet.appguardavolume.model.domain.Vestido;
 import br.edu.infnet.appguardavolume.model.domain.Condomino;
 
-@Order(1)
+@Order(2)
 @Component
 public class GuardaVolumeTeste implements ApplicationRunner {
 
+	private GuardaVolumeService guardaVolumeService;
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println("## Cadastramento de Guarda Volumes ##");
@@ -70,7 +72,7 @@ public class GuardaVolumeTeste implements ApplicationRunner {
 		p1.setCondomino(c1);
 		p1.setVolumes(GuardaVolume01);
 		GuardaVolumeController.incluir(p1);
-		
+
 		GuardaVolume p2 = new GuardaVolume();
 		p2.setData(LocalDateTime.now());
 		p2.setDescricao("Segundo Guarda Volume");

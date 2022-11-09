@@ -4,37 +4,39 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<title>Cadastramento de Bebidas</title>
 </head>
 <body>
+	<c:import url="/WEB-INF/jsp/menu.jsp"/>
+
 	<div class="container mt-3">
 	  <h3>Bebidas: ${listagem.size()}</h3>
-
-	  <table class="table table-striped">
-	    <thead>
-	      <tr>
-	        <th>ID</th>
-	        <th>Nome</th>
-	        <th>Valor</th>
-	        <th>Código</th>
-	        <th>Marca</th>
-	        <th></th>
-	      </tr>
-	    </thead>
-	    <tbody>
-		  <c:forEach var="b" items="${listagem}">
-		      <tr>
-				<td>${b.id}</td>
-		        <td>${b.nome}</td>
-		        <td>${b.valor}</td>
-		        <td>${b.codigo}</td>
-		        <td>${b.marca}</td>
-		        <td><a href="/bebida/${b.id}/excluir">excluir</a></td>
-		      </tr>
-	      </c:forEach>
-	    </tbody>
-	  </table>
+		<h4><a href="/bebida">Nova Bebida</a></h4>
+		<table class="table table-striped">
+			<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Valor</th>
+				<th>Código</th>
+				<th>Marca</th>
+				<th></th>
+			</tr>
+			</thead>
+			<tbody>
+			<c:forEach var="b" items="${listagem}">
+				<tr>
+					<td>${b.id}</td>
+					<td>${b.nome}</td>
+					<td>${b.valor}</td>
+					<td>${b.codigo}</td>
+					<td>${b.marca}</td>
+					<td><a href="/bebida/${b.id}/excluir">excluir</a></td>
+				</tr>
+			</c:forEach>
+			</tbody>
+		</table>
 	</div>
 </body>
 </html>

@@ -1,5 +1,7 @@
 package br.edu.infnet.appguardavolume;
 
+import br.edu.infnet.appguardavolume.model.service.VolumeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -10,10 +12,12 @@ import br.edu.infnet.appguardavolume.model.domain.Bebida;
 import br.edu.infnet.appguardavolume.model.domain.Comida;
 import br.edu.infnet.appguardavolume.model.domain.Vestido;
 
-@Order(3)
+@Order(4)
 @Component
 public class VolumeTeste implements ApplicationRunner {
 
+	@Autowired
+	private VolumeService volumeService;
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println("## Cadastramento de Volumes ##");
@@ -24,7 +28,7 @@ public class VolumeTeste implements ApplicationRunner {
 		b1.setValor(10);
 		b1.setQuantidade(10);
 		b1.setMarca("Heineken");
-		VolumeController.incluir(b1);
+		volumeService.incluir(b1);
 
 		Comida c1 = new Comida();
 		c1.setCodigo(123);
@@ -32,7 +36,7 @@ public class VolumeTeste implements ApplicationRunner {
 		c1.setValor(10);
 		c1.setPeso(100);
 		c1.setPerecivel(true);
-		VolumeController.incluir(c1);
+		volumeService.incluir(c1);
 
 		Vestido v1 = new Vestido();
 		v1.setCodigo(123);
@@ -40,6 +44,6 @@ public class VolumeTeste implements ApplicationRunner {
 		v1.setValor(10);
 		v1.setImportado(false);
 		v1.setTamanho("GG");
-		VolumeController.incluir(v1);
+		volumeService.incluir(v1);
 	}
 }

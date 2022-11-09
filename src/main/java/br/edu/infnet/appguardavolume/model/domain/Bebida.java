@@ -1,5 +1,10 @@
 package br.edu.infnet.appguardavolume.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tbebida")
 public class Bebida extends Volume {
 	private int quantidade;
 	private String marca;
